@@ -1,0 +1,19 @@
+diff --git a/node_modules/@servicenow/sdk-cli-core/dist/auth/OAuth/CodeGrant.js b/node_modules/@servicenow/sdk-cli-core/dist/auth/OAuth/CodeGrant.js
+index 14129b4..4283557 100644
+--- a/node_modules/@servicenow/sdk-cli-core/dist/auth/OAuth/CodeGrant.js
++++ b/node_modules/@servicenow/sdk-cli-core/dist/auth/OAuth/CodeGrant.js
+@@ -1,5 +1,5 @@
+ "use strict";
+-var __importDefault = (this && this.__importDefault) || function (mod) {
++var __importDefault = (this && this.__importDefault) || function(mod) {
+     return (mod && mod.__esModule) ? mod : { "default": mod };
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+@@ -39,6 +39,7 @@ const initOAuthFlow = async (host, logger) => {
+             code_challenge_method: 'S256',
+         });
+         logger?.info(`Opening web browser to authenticate with instance ${host}, navigate to the browser to continue OAuth...`);
++        logger?.info(`You can also open this link and do the auth flow and copy the token: ${authorizationUri}`);
+         // open browser to the authorization uri to initiate the oauth flow
+         (0, open_1.default)(authorizationUri);
+         const authCode = await (0, prompts_1.password)({

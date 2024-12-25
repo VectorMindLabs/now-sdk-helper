@@ -1,0 +1,23 @@
+{
+    "name": "now-sdk-helper",
+    "version": "0.0.1",
+    "description": "Helper CLI tool for ServiceNow Now SDK (Fluent).",
+    "license": "MIT",
+    "bin": {
+        "now-sdk": "now-sdk"
+    },
+    "scripts": {
+        "postinstall": "patch-package",
+        "prettify": "prettier --write src",
+    },
+    "devDependencies": {
+        "@servicenow/sdk": "2.2.2",
+        "@servicenow/sdk-cli-core": "2.2.2", 
+        "@servicenow/glide": "26.0.1", 
+        "eslint": "8.50.0",
+        "@servicenow/eslint-plugin-sdk-app-plugin": "2.2.2",
+        "patch-package": "^8.0.0",
+        "prettier": "^3.0.3",
+        "prettier-plugin-organize-imports": "^3.2.4" 
+    }
+}
