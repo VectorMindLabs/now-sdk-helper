@@ -10,7 +10,7 @@ echo "Copyright (C) 2024-Present, VectorMind Labs."
 echo ""
 
 # Get Alias
-account=$(cat /now/secret.json | jq .alias)
+account=$(cat /now/secret.json | jq -r .alias)
 
 if [ "${account}" = "null" ]; then
 	echo "[-] Invalid Secrets at /now/secret.json"
@@ -42,8 +42,8 @@ if [ ! -f /now/app/package.json ]; then
 fi
 
 cd /now/app
-appname=$(cat package.json | jq .name)
-appversion=$(cat package.json | jq .version)
+appname=$(cat package.json | jq -r .name)
+appversion=$(cat package.json | jq -r .version)
 
 echo ""
 echo "[+] Now-SDK App: ${appname}@${appversion}"
@@ -53,7 +53,7 @@ npm ci
 echo "[+] Building ${appname}@${appversion}"
 npm run build
 
-if [ $1 = "deploy" ]; then
+if [[ -v DEPLOY ]]; then
 	echo "[+] Deploying to Instance"
 	npm run deploy
 fi
