@@ -5,11 +5,11 @@
     "license": "MIT",
     "main": "./dist/main.js",
     "bin": {
-        "now-sdk": "now-sdk",
+        "now-sdk": "./node_modules/@servicenow/sdk/bin/index.js",
         "now-sdk-helper": "./dist/main.js"
     },
     "scripts": {
-        "build": "tsc -p .",
+        "build": "tsc -p . && tsc-alias",
         "bin": "ts-node ./src/main.ts",
         "postinstall": "patch-package",
         "prettify": "prettier --write src"
@@ -21,6 +21,7 @@
         "prettier": "^3.0.3",
         "prettier-plugin-organize-imports": "^3.2.4",
         "ts-node": "^10.9.2",
+        "tsc-alias": "^1.8.10",
         "tsconfig-paths": "^4.2.0",
         "typescript": "^5.7.2"
     },

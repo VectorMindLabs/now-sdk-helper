@@ -33,6 +33,52 @@ will use this tool to avoid adding the secret export to git.
  npx now-sdk-helper # To use additional help scripts for now-sdk for CI/CD
 ```
 
+## Building and Deploying from CI/CD with Now-SDK
+
+Before we begin you must create a nowsdk secret export json file and upload it to
+your keyvault (in our case it was Azure Keyvault) then pull that file from your keyvault
+and use it for deployment.
+
+**IMPORTANT**: If you use OAuth, this is for most cases because every organization now has SSO. You should
+first install ServiceNow IDE in your instance from the plugin manager.
+
+Now you can login from your local machine with,
+```
+ npm i
+ npx now-sdk auth save sn_prod_login --type oauth
+ # If no browser is opened then copy the link in the terminal put it in
+ # your browser and then copy the access token to the terminal back.
+```
+
+Let's export the secret now.
+
+```
+ npx now-sdk-helper export --account sn_prod_login
+ # You should have a file named 'sn_prod_login-nowsdk-secret-export.json'
+```
+
+Now upload this secret export json file to your keyvault. And use it like this in your
+linux CI/CD runner.
+
+```
+ docker run \
+    -v $PWD:/now/app \
+    -v sn_prod_login-nowsdk-secret-export.json:/now/secret.json \
+    -it quay.io/vlpl/now-sdk-builder:latest
+```
+
+This will build your application and fail if the build fails.
+
+Now to deploy you simply pass ```deploy``` to this command.
+
+
+```
+ docker run \
+    -v $PWD:/now/app \
+    -v sn_prod_login-nowsdk-secret-export.json:/now/secret.json \
+    -it quay.io/vlpl/now-sdk-builder:latest deploy
+```
+
 ## Disclaimer
 
 We have no association or affiliation to ServiceNow Inc. This is purely community work. We do want to
