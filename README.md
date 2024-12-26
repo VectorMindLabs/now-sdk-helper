@@ -15,9 +15,23 @@ right from GNU/Linux CI/CD runner using Docker.
 This helper cli also has some usability patches for GNU/Linux which we don't know where to submit these
 patches to get it merged in the upstream (please feel free ping us if you find a link).
 
+## Important
+
+If you are planning on using this tool, add this gitignore to your repo which you
+will use this tool to avoid adding the secret export to git.
+
+```
+# Now-SDK Secret Exports
+*-nowsdk-secret-export.json
+```
+
 ## How
 
-TODO
+```
+ npm i
+ npx now-sdk # To use the patched now-sdk with fixes
+ npx now-sdk-helper # To use additional help scripts for now-sdk for CI/CD
+```
 
 ## Disclaimer
 
@@ -33,4 +47,5 @@ is amazing.
 The MIT License.
 
 Copyright (C) 2024-Present, VectorMind Labs.
-Maintained by Antony J.R <antony@ibconsultants.net>
+
+Written by Antony J.R <antony@vectormindlabs.com>

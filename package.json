@@ -3,21 +3,32 @@
     "version": "0.0.1",
     "description": "Helper CLI tool for ServiceNow Now SDK (Fluent).",
     "license": "MIT",
+    "main": "./dist/main.js",
     "bin": {
-        "now-sdk": "now-sdk"
+        "now-sdk": "now-sdk",
+        "now-sdk-helper": "./dist/main.js"
     },
     "scripts": {
+        "build": "tsc -p .",
+        "bin": "ts-node ./src/main.ts",
         "postinstall": "patch-package",
-        "prettify": "prettier --write src",
+        "prettify": "prettier --write src"
     },
     "devDependencies": {
         "@servicenow/sdk": "2.2.2",
-        "@servicenow/sdk-cli-core": "2.2.2", 
-        "@servicenow/glide": "26.0.1", 
-        "eslint": "8.50.0",
-        "@servicenow/eslint-plugin-sdk-app-plugin": "2.2.2",
+        "@servicenow/sdk-cli-core": "2.2.2",
         "patch-package": "^8.0.0",
         "prettier": "^3.0.3",
-        "prettier-plugin-organize-imports": "^3.2.4" 
+        "prettier-plugin-organize-imports": "^3.2.4",
+        "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.7.2"
+    },
+    "dependencies": {
+        "@types/chalk": "^0.4.31",
+        "@types/yargs": "^17.0.33",
+        "chalk": "^4.1.2",
+        "keytar": "^7.9.0",
+        "yargs": "^17.7.2"
     }
 }
