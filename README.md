@@ -76,7 +76,7 @@ Now to deploy you simply set ```DEPLOY``` environmental variable in the docker r
  docker run \
     -v $PWD:/now/app \
     -v sn_prod_login-nowsdk-secret-export.json:/now/secret.json \
-    -e DEPLOY \ # This makes the docker image deploy to instance after build
+    -e DEPLOY=1 \ # This makes the docker image deploy to instance after build
     -it quay.io/vlpl/now-sdk-builder:latest
 ```
 
